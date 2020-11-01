@@ -15,7 +15,7 @@ def predict():
     ...
     #For rendering result on HTML GUI
     ...
-    int_features = [int(x) for x in request.form.values()]
+    int_features = [x for x in request.form.values()]
     from flask import render_template
     var1 = str(int_features[8])
     var2 = str(int_features[9])
