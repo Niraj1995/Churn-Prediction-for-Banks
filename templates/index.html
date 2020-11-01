@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <style>
+             .header-image{background-color:red; padding:20px;}
+             input[type=submit] {
+              background-color: transparent;
+              border: 1px solid black;
+              color: black;
+              padding: 20px 20px;
+              margin: 20px 20px;
+              cursor: pointer;
+              border-radius:30%;
+           }
+           .center-text{text-align:center}
+        </style>
+        <meta charset="utf-8">
+        <title>Predicting Churn for Bank Customer</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='diabetes-favicon.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Website Title -->
+    	<div class="container header-image" align="center">
+            <h2 class='container-heading'><span class="heading_font"><i>Predicting Churn for Bank Customer</i></span></h2>
+            <div class='description'>
+    			<p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
+    	    </div>
+    	</div><br>
+
+        <!-- Text Area -->
+    	<div class="ml-container" align="center">
+    		<form action="{{ url_for('predict') }}" method="POST">
+                <label for="creditScore">CreditScore:</label>
+				<input type="text" name="creditScore" placeholder="Eg:-630" required="required" class="center-text" /><br>
+                
+				<label for="age">Age:</label>
+				<input type="text" name="age" placeholder="Eg:-30" required="required" class="center-text" /><br>
+				
+				<label for="tenure">Tenure:</label>
+                <input type="text" name="Tenure" placeholder="Eg:-12" required="required" class="center-text" /><br>
+				
+				<label for="balance">Balance:</label>
+                <input type="text" name="Balance" placeholder="Eg:-50000" required="required" class="center-text" /><br>
+                
+				<label for="numOfProducts">Num Of Products:</label>
+				<input type="text" name="numOfProducts" placeholder="Eg:-5 Value-Range(1-4)" required="required" class="center-text" /><br>
+				
+				<label for="hasCrCard">HasCrCard:</label>
+                <input type="text" name="hasCrCard" placeholder="Eg:-4 Value-Range(1-4)" required="required" class="center-text" /><br>
+				
+				<label for="isActiveMember">IsActiveMember:</label>
+                <input type="text" name="isActiveMember" placeholder="Eg:-115" required="required" class="center-text" /><br>
+				
+				<label for="estimatedSalary">Estimated Salary:</label>
+                <input type="text" name="estimatedSalary" placeholder="Eg:-150000" required="required" class="center-text" /><br>
+				
+				<label for="geography">Geography:</label>
+                <input type="text" name="geography" placeholder="Eg:-Germany(Germany/Spain/France)" required="required" class="center-text" /><br>
+			
+				<label for="gender">Gender:</label>
+                <input type="text" name="gender" placeholder="Eg:-Male(Male/Female)" required="required" class="center-text" /><br>
+				
+        		<input type="submit"  value="Predict">
+        	</form>
+        	
+        	<br>
+        	 {{ prediction_text }}
+    	</div><br>
+
+      <footer class="header-image" align="center">
+  	<p>Done by: Niraj Namaye</p>
+      </footer>
+
+    </body>
+</html>
