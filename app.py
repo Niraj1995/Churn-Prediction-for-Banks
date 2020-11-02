@@ -15,21 +15,29 @@ def predict():
     ...
     #For rendering result on HTML GUI
     ...
-    int_features = [x for x in request.form.values()]
+#    int_features = [x for x in request.form.values()]
+    CreditScore = int(request.form['creditScore'])
+    age = int(request.form['age'])
+    Tenure = int(request.form['Tenure'])
+    Balance = int(request.form['Balance'])
+    numOfProducts = int(request.form['numOfProducts'])
+    hasCrCard = int(request.form['hasCrCard'])
+    estimatedSalary = int(request.form['estimatedSalary'])
+    geography = str(request.form['geography'])
+    gender = str(request.form['gender'])
+    isActiveMember = int(request.form['isActiveMember'])
+
+
     from flask import render_template
-    var1 = str(int_features[8])
-    var2 = str(int_features[9])
 
-    var1 = var1.lower()
-    var2 = var2.lower()
+    geography = geography.lower()
+    gender = gender.lower()
 
-    Geography1 = (1 if var1 == "germany" else 0)
-    Geography2 = (1 if var1 == "spain" else 0)
-    Gender = (1 if var2 == "male" else 0)
+    Geography1 = (1 if geography == "germany" else 0)
+    Geography2 = (1 if geography == "spain" else 0)
+    Gender = (1 if gender == "male" else 0)
 
-    int_features[8] = Geography1
-    int_features[9] = Geography2
-    int_features.append(Gender)
+    int_features = [CreditScore,age,Tenure,Balance,numOfProducts,hasCrCard,estimatedSalary,Geography1,Geography2,Gender,isActiveMember]
 
     final_features = (np.array(int_features))
     final_features.resize(1,11)
