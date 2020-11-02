@@ -45,7 +45,7 @@ def predict():
     final_features = (np.array(int_features))
     final_features.resize(1,11)
     final_features = scalar.transform(final_features)
-
+    
     model = keras.models.load_model('model.h5')
 
     prediction =  model.predict(final_features)
