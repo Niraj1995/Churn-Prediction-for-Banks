@@ -44,7 +44,7 @@ def predict():
     int_features = [CreditScore,age,Tenure,Balance,numOfProducts,hasCrCard,estimatedSalary,Geography1,Geography2,Gender,isActiveMember]
     final_features = (np.array(int_features))
     final_features.resize(1,11)
-    #final_features = scalar.transform(final_features)
+    final_features = scalar.transform(final_features)
     
     model = keras.models.load_model('model.h5')
 
