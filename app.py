@@ -5,6 +5,7 @@ from tensorflow import keras
 
 app = Flask(__name__)
 model = keras.models.load_model("model.h5")
+scalar = pickle.load(open('scalar.pkl','rb'))
 
 @app.route('/')
 def home():
@@ -16,6 +17,8 @@ def predict():
     #For rendering result on HTML GUI
     ...
 #    int_features = [x for x in request.form.values()]
+
+    
     CreditScore = int(request.form['creditScore'])
     age = int(request.form['age'])
     Tenure = int(request.form['Tenure'])
@@ -38,7 +41,8 @@ def predict():
     Gender = (1 if gender == "male" else 0)
 
     int_features = [CreditScore,age,Tenure,Balance,numOfProducts,hasCrCard,estimatedSalary,Geography1,Geography2,Gender,isActiveMember]
-
+    int_features = scalar.transform(int_features)
+    
     final_features = (np.array(int_features))
     final_features.resize(1,11)
 
