@@ -42,10 +42,9 @@ def predict():
     Gender = (1 if gender == "male" else 0)
 
     int_features = [CreditScore,age,Tenure,Balance,numOfProducts,hasCrCard,estimatedSalary,Geography1,Geography2,Gender,isActiveMember]
-    int_features = scalar.transform(int_features)
-    
     final_features = (np.array(int_features))
     final_features.resize(1,11)
+    final_features = scalar.transform(final_features)
 
     model = keras.models.load_model('model.h5')
 
