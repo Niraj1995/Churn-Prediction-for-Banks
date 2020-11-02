@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from flask import Flask, request, jsonify, render_template
 from tensorflow import keras
+import pickle
 
 app = Flask(__name__)
 model = keras.models.load_model("model.h5")
